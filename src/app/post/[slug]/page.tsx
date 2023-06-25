@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import { getPosts, getPostDetails } from "@/services";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import {
   PostDetail,
   Author,
@@ -14,10 +14,10 @@ import {
 } from "@/components";
 
 const PostDetails = async ({ params }) => {
-  const router = useRouter();
-  if(router.isFallback){
-    return <Loader />
-  }
+  // const router = useRouter();
+  // if(router.isFallback){
+  //   return <Loader />
+  // }
   const post = await getPostDetails(params.slug);
   return (
     <div className="container mx-auto px-10 mb-8">

@@ -1,18 +1,18 @@
 "use client"
 import React from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { getCategories, getCategoryPost } from '@/services';
 import { PostCard, Categories, Loader } from '@/components';
 
 const CategoryPost = async ({ params }: any) => {
-  const router = useRouter();
+  // const router = useRouter();
   const posts = await getCategoryPost(params.slug);
   const categories = await getCategories();
 
 
-  if (router.isFallback) {
-    return <Loader />;
-  }
+  // if (router.isFallback) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className="container mx-auto px-10 mb-8">
