@@ -7,18 +7,24 @@ import {
   Author,
   CommentsForm,
   Comments,
-  AdjacentPosts,
   PostWidget,
   Categories,
   Loader
 } from "@/components";
+import { Category, PostDetailType } from "@/types";
 
-const PostDetails = async ({ params }) => {
+interface PramsType{
+  params: {
+    slug: string
+  }
+}
+
+const PostDetails = async ({ params }: PramsType) => {
   // const router = useRouter();
   // if(router.isFallback){
   //   return <Loader />
   // }
-  const post = await getPostDetails(params.slug);
+  const post: PostDetailType = await getPostDetails(params.slug);
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -27,7 +33,7 @@ const PostDetails = async ({ params }) => {
             <div className="col-span-1 lg:col-span-8">
               <PostDetail post={post} />
               <Author author={post.author} />
-              <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
+              {/* <AdjacentPosts slug={post.slug} createdAt={post.createdAt} /> */}
               <CommentsForm slug={post.slug} />
               <Comments slug={post.slug} />
             </div>
@@ -35,7 +41,9 @@ const PostDetails = async ({ params }) => {
               <div className="relative lg:sticky top-8">
                 <PostWidget
                   slug={post.slug}
-                  categories={post.categories.map((category) => category.slug)}
+                  categories={post.categories.map((category: any) => {
+                    return category.slug
+                  })}
                 />
                 <Categories />
               </div>

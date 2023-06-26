@@ -5,13 +5,11 @@ import parse from 'html-react-parser';
 
 import { getComments } from '../services';
 
-export const Comments = ({ slug }) => {
+export const Comments = ({ slug }: { slug: string }) => {
   const [comments, setComments] = useState([]);
-  console.log(slug);
 
   useEffect(() => {
     getComments(slug).then((result) => {
-      console.log('----------------------------', result);
       setComments(result);
     });
   }, []);
@@ -25,7 +23,7 @@ export const Comments = ({ slug }) => {
             {' '}
             Comments
           </h3>
-            {comments.map((comment, index) => (
+            {comments.map((comment: { name: string, createdAt: string, comment: string }, index: number) => (
               <div key={index} className="border-b border-gray-100 mb-4 pb-4">
                 <p className="mb-4">
                   <span className="font-semibold">{comment.name}</span>

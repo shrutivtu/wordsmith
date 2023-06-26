@@ -1,11 +1,20 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 import { getRecentPosts, getSimilarPosts } from '@/services';
+import { Category, RelatedPost } from '@/types';
 
-export const PostWidget = ({ categories, slug }) => {
-  const [relatedPosts, setRelatedPosts] = useState([]);
+type Props = {
+  categories?: {
+    name: string,
+    slug: string,
+  }[],
+  slug?: string
+}
+
+export const PostWidget:FC<Props> = ({ categories = [], slug = '' }) => {
+  const [relatedPosts, setRelatedPosts] = useState<RelatedPost[]>([]);
 
   useEffect(() => {
     if(slug){
