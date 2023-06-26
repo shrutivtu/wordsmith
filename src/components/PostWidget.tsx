@@ -3,7 +3,7 @@ import React, { useState, useEffect, FC } from 'react';
 import moment from 'moment';
 import Link from 'next/link';
 import { getRecentPosts, getSimilarPosts } from '@/services';
-import { Category, RelatedPost } from '@/types';
+import { RelatedPost } from '@/types';
 
 type Props = {
   categories?: {

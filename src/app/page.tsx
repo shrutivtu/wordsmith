@@ -16,7 +16,7 @@ export default async function Home(): Promise<JSX.Element> {
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='lg:col-span-8 col-span-1'>
           {posts && posts.map((post, index) => {
-            return <PostCard title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} key={index} name={post.node.author.name} authorURL={post.node.author.photo.url} featuredImage={post.node.featuredImage.url} createdAt={post.node.createdAt} />
+            return <PostCard title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} key={index} name={post.node.author.name} authorURL={post.node.author.photo.url} featuredImage={post.node.featuredImage} createdAt={post.node.createdAt} />
           })}
         </div>
         <div className='lg:col-span-4 col-span-1'>

@@ -207,7 +207,6 @@ export const getFeaturedPosts = async () => {
 };
 
 export const submitComment = async (obj: CommentObjtype) => {
-  console.log(obj);
   const result: any = await fetch('/api/comments', {
     method: 'POST',
     headers: {

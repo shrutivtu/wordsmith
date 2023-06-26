@@ -22,8 +22,11 @@ export type PostNode = {
     slug: string;
     title: string;
     excerpt: string;
-    featuredImage: FeaturedImage;
+    featuredImage: FeaturedImage | string;
+    // featuredImage: string;
     categories: Category[];
+    name?: string,
+    authorURL?: string,
 };
 
 export type Post = {
