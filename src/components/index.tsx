@@ -7,6 +7,6 @@ export * from './Comments';
 export * from './Author';
 export * from './CommentsForm';
 export * from './PostDetail';
-export * from './AdjacentPosts';
+// export * from './AdjacentPosts';
 export * from './FeaturedPostCard';
 export * from './Loader';

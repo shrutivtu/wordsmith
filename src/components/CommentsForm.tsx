@@ -1,24 +1,50 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { submitComment } from '../services';
+import { CommentObjtype } from '@/types';
 
-export const CommentsForm = ({ slug }) => {
+type FormData = {
+  name: string;
+  email: string;
+  comment: string;
+  storeData: boolean;
+};
+
+type CommentsFormProps = {
+  slug: string;
+};
+
+export const CommentsForm = ({ slug }: { slug: string }) => {
   const [error, setError] = useState(false);
-  const [localStorage, setLocalStorage] = useState(null);
+  const [localStorage, setLocalStorage] = useState<Storage | null>(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', comment: '', storeData: false });
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    comment: '',
+    storeData: false,
+  });
 
   useEffect(() => {
     setLocalStorage(window.localStorage);
-    const initalFormData = {
-      name: window.localStorage.getItem('name'),
-      email: window.localStorage.getItem('email'),
-      storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
+    // const initalFormData = {
+    //   name: window.localStorage.getItem('name'),
+    //   email: window.localStorage.getItem('email'),
+    //   storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
+    // };
+    const initalFormData: FormData = {
+      name: window.localStorage.getItem('name') || '',
+      email: window.localStorage.getItem('email') || '',
+      storeData: !!(
+        window.localStorage.getItem('name') || window.localStorage.getItem('email')
+      ),
+      comment: '', // Add the 'comment' property with a default value
     };
+    
     setFormData(initalFormData);
   }, []);
 
-  const onInputChange = (e) => {
+  const onInputChange = (e: any) => {
     const { target } = e;
     if (target.type === 'checkbox') {
       setFormData((prevState) => ({
@@ -40,20 +66,22 @@ export const CommentsForm = ({ slug }) => {
       setError(true);
       return;
     }
-    const commentObj = {
+  const commentObj: CommentObjtype = {
       name,
       email,
       comment,
       slug,
     };
-
-    if (storeData) {
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
-    } else {
-      localStorage.removeItem('name');
-      localStorage.removeItem('email');
+    if(localStorage){
+      if (storeData) {
+        localStorage.setItem('name', name);
+        localStorage.setItem('email', email);
+      } else {
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
+      }
     }
+    
 
     submitComment(commentObj)
       .then((res) => {

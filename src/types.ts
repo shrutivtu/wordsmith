@@ -60,3 +60,10 @@ export type PostDetailType = {
     };
     categories: Category[]
 }
+
+export type CommentObjtype = {
+    name: string, 
+    email: string, 
+    comment: string, 
+    slug: string
+} 
