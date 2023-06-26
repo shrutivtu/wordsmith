@@ -31,7 +31,7 @@ export const PostWidget:FC<Props> = ({ categories = [], slug = '' }) => {
       <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
         { slug ? 'Related Posts' : 'Recent Posts' }
       </h3>
-      {relatedPosts.map((post, index) => (
+      {relatedPosts.map((post: RelatedPost, index) => (
         <div key={post.title} className='flex flex-items-center w-full mb-4'>
           <div className='w-16 flex-none'>
             <img 

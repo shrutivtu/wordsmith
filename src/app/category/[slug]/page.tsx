@@ -20,7 +20,6 @@ const CategoryPost = async ({ params }: any) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
           {posts.map((post: Post, index: number) => {
-            // return <PostCard key={index} post={post.node} />
             return <PostCard key={index} title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} name={post.node.name} authorURL={post.node.authorURL} featuredImage={post.node.featuredImage} createdAt={post.node.createdAt} />
           })}
         </div>
