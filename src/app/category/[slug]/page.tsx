@@ -19,9 +19,9 @@ const CategoryPost = async ({ params }: any) => {
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
-          {posts.map((post: Post, index: number) => {
+          {posts.length>0 ? posts.map((post: Post, index: number) => {
             return <PostCard key={index} title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} name={post.node.name} authorURL={post.node.authorURL} featuredImage={post.node.featuredImage} createdAt={post.node.createdAt} />
-          })}
+          }) : <h2>No Posts to show</h2>}
         </div>
         <div className="col-span-1 lg:col-span-4">
           <div className="relative lg:sticky top-8">

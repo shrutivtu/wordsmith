@@ -10,3 +10,4 @@ export * from './PostDetail';
 // export * from './AdjacentPosts';
 export * from './FeaturedPostCard';
 export * from './Loader';
+export * from './Footer';
