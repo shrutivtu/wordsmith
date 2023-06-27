@@ -26,8 +26,8 @@ export const Author: FC<AuthorProps> = ({ author }) => {
         />
       </div>
       <div className='w-1/2 pl-5 pt-4'>
-        <h3 className="text-white mt-4 mb-4 text-xl font-bold">{author.name}</h3>
-        <p className="text-white text-ls">{author.bio}</p>
+        <h3 className="mt-4 mb-4 text-xl font-bold text-gray">{author.name}</h3>
+        <p className="text-ls text-gray">{author.bio}</p>
       </div>
     </div>
   );
